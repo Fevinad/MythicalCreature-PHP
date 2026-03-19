@@ -40,7 +40,7 @@ class Direwolf
 
     public function protects(Stark $stark): void
     {
-        // Vérifie si le lieu est le même ET si le loup protège moins de 2 personnes
+
         if ($this->home === $stark->getLocation() && count($this->starksToProtect) < 2) {
             $this->starksToProtect[] = $stark;
             $stark->setSafe(true);
@@ -49,7 +49,7 @@ class Direwolf
 
     public function huntsWhiteWalkers(): bool
     {
-        // Chasse uniquement s'il n'y a personne à protéger
+        
         return empty($this->starksToProtect);
     }
 
@@ -57,9 +57,7 @@ class Direwolf
     {
         foreach ($this->starksToProtect as $key => $protectedStark) {
             if ($protectedStark === $stark) {
-                // Retire le Stark du tableau
                 unset($this->starksToProtect[$key]);
-                // Réindexe le tableau (pour éviter les trous dans les clés)
                 $this->starksToProtect = array_values($this->starksToProtect);
                 
                 $stark->setSafe(false);

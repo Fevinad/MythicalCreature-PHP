@@ -35,7 +35,7 @@ class Ogre
     {
         $human->increaseEncounterCounter();
         
-        // Si l'Humain remarque l'Ogre, l'Ogre donne un coup de massue
+        // ici si humain detecter coup de massue sur lui
         if ($human->noticesOgre()) {
             $this->swingAt($human);
         }
@@ -45,7 +45,7 @@ class Ogre
     {
         $this->swings++;
         
-        // Assomme l'Humain un coup sur deux
+        // ici on assomme l'humain mais 1 fois sur 2 en gros
         if ($this->swings % 2 === 0) {
             $human->setKnockedOut(true);
         }
@@ -53,7 +53,7 @@ class Ogre
 
     public function apologize(Human $human): void
     {
-        // L'Ogre s'excuse, l'Humain se réveille
+        // L'Ogre pardonne et l'humain se reveille
         $human->setKnockedOut(false);
     }
 }
